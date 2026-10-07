@@ -25,15 +25,17 @@ routerAdd('GET', '/backend/v1/solaris/catalogo', (e) => {
   let obra = null
   try {
     const cfg = $app.findRecordsByFilter('solaris_config', "chave = 'showcase'", '', 5, 0)
-    console.log('solaris_catalogo: cfg.length=' + cfg.length)
     for (let i = 0; i < cfg.length; i++) {
       let d = cfg[i].get('dados')
-      console.log(
-        'solaris_catalogo: typeof dados=' + typeof d + ' len=' + (d ? String(d).length : 0),
-      )
       if (typeof d === 'string') {
         try {
           d = JSON.parse(d)
+        } catch (err) {
+          d = null
+        }
+      } else if (d && String(d).charAt(0) === '{') {
+        try {
+          d = JSON.parse(String(d))
         } catch (err) {
           d = null
         }
