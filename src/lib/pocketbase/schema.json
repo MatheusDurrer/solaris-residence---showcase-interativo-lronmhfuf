@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-07T00:57:35.098Z",
+  "generatedAt": "2026-10-07T01:42:53.176Z",
   "collections": [
     {
       "name": "users",
@@ -7,7 +7,7 @@
       "apiRules": {
         "list": "id = @request.auth.id",
         "view": "id = @request.auth.id",
-        "create": "",
+        "create": null,
         "update": "id = @request.auth.id",
         "delete": "id = @request.auth.id"
       },
@@ -29,20 +29,237 @@
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": ["onCreate"]
+          "autodateTriggers": [
+            "onCreate"
+          ]
         },
         {
           "name": "updated",
           "type": "autodate",
           "required": false,
           "system": false,
-          "autodateTriggers": ["onCreate", "onUpdate"]
+          "autodateTriggers": [
+            "onCreate",
+            "onUpdate"
+          ]
         }
       ],
       "indexes": [
         "CREATE UNIQUE INDEX `idx_tokenKey__pb_users_auth_` ON `users` (`tokenKey`)",
         "CREATE UNIQUE INDEX `idx_email__pb_users_auth_` ON `users` (`email`) WHERE `email` != ''"
       ]
+    },
+    {
+      "name": "solaris_unidades",
+      "type": "base",
+      "apiRules": {
+        "list": null,
+        "view": null,
+        "create": null,
+        "update": null,
+        "delete": null
+      },
+      "fields": [
+        {
+          "name": "numero",
+          "type": "number",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "andar",
+          "type": "number",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "final",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "tipologia",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "posicao",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "orientacao",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "area",
+          "type": "number",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "vaga",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "valor",
+          "type": "number",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "status",
+          "type": "select",
+          "required": true,
+          "system": false,
+          "selectValues": [
+            "disponivel",
+            "reservada",
+            "vendida"
+          ]
+        },
+        {
+          "name": "planta",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "cota",
+          "type": "number",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "fachada",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "poly",
+          "type": "json",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "created",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate"
+          ]
+        },
+        {
+          "name": "updated",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate",
+            "onUpdate"
+          ]
+        }
+      ],
+      "indexes": []
+    },
+    {
+      "name": "solaris_config",
+      "type": "base",
+      "apiRules": {
+        "list": null,
+        "view": null,
+        "create": null,
+        "update": null,
+        "delete": null
+      },
+      "fields": [
+        {
+          "name": "chave",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "dados",
+          "type": "json",
+          "required": false,
+          "system": false
+        },
+        {
+          "name": "created",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate"
+          ]
+        },
+        {
+          "name": "updated",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate",
+            "onUpdate"
+          ]
+        }
+      ],
+      "indexes": []
+    },
+    {
+      "name": "solaris_assets",
+      "type": "base",
+      "apiRules": {
+        "list": null,
+        "view": null,
+        "create": null,
+        "update": null,
+        "delete": null
+      },
+      "fields": [
+        {
+          "name": "chave",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "conteudo",
+          "type": "text",
+          "required": true,
+          "system": false
+        },
+        {
+          "name": "created",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate"
+          ]
+        },
+        {
+          "name": "updated",
+          "type": "autodate",
+          "required": false,
+          "system": false,
+          "autodateTriggers": [
+            "onCreate",
+            "onUpdate"
+          ]
+        }
+      ],
+      "indexes": []
     }
   ]
 }

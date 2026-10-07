@@ -5,3 +5,11 @@ import './main.css'
 
 // @skip-protected: Do not remove. Required for React rendering.
 createRoot(document.getElementById('root')!).render(<App />)
+
+if (import.meta.env.PROD && 'serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js').catch(() => {
+      console.warn('Solaris: instalação offline indisponível; experiência online mantida.')
+    })
+  })
+}
